@@ -17,6 +17,8 @@ on:
       - reopened
 jobs:
   setup-runner:
+    permissions:
+      contents: none
     name: Start self-hosted EC2 runner
     runs-on: ubuntu-latest
     outputs:
@@ -30,6 +32,8 @@ jobs:
           echo "INSTANCE_NAME: ${INSTANCE_NAME}"
           echo ::set-output name=ec2-instance-id::${INSTANCE_NAME}
   build-release:
+    permissions:
+      contents: read
     name: Build Release based on PR
     needs: setup-runner # required to start the main job when the runner is ready
     runs-on: ${{ needs.setup-runner.outputs.ec2-instance-id }} # run the job on the newly created runner
@@ -67,6 +71,8 @@ jobs:
           cd `find ./release -type d -name "tce-linux-amd64-*" | xargs -n1 echo -n`
           ALLOW_INSTALL_AS_ROOT=true ./install.sh
   test-diagnostics-plugin:
+    permissions:
+      contents: none
     name: Test Diagnostics Plugin
     needs:
       - setup-runner # required to start the main job when the runner is ready
@@ -78,6 +84,8 @@ jobs:
           cd cli/cmd/plugin/diagnostics/
           make test-pr-check
   teardown-runner:
+    permissions:
+      contents: none
     name: Stop self-hosted EC2 runner
     needs:
       - setup-runner # required to get output from the setup-runner job
