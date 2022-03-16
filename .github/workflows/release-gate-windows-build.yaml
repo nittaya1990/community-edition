@@ -9,6 +9,8 @@ on:
 
 jobs:
   release-gate-windows-release-build:
+    permissions:
+      contents: read
     name: Release Gate - Windows OS Release Build
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
