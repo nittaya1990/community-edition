@@ -7,6 +7,8 @@ on:
 
 jobs:
   update-choco-package:
+    permissions:
+      contents: read
     name: Update Choco Package
     runs-on: ubuntu-latest
     steps:
