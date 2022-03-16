@@ -16,6 +16,8 @@ on:
 
 jobs:
   setup-runner:
+    permissions:
+      contents: none
     name: Start self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
@@ -32,6 +34,8 @@ jobs:
           echo ::set-output name=ec2-instance-id::${INSTANCE_NAME}
   e2e-azure-management-and-workload-test:
     # Only run this job if we're in the main repo, not a fork.
+    permissions:
+      contents: read
     if: github.repository == 'vmware-tanzu/community-edition'
     name: E2E Azure Management and Workload Cluster Test
     runs-on: ubuntu-latest
@@ -77,6 +81,8 @@ jobs:
             workload-cluster.*.diagnostics.tar.gz
 
   teardown-runner:
+    permissions:
+      contents: none
     name: Stop self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
