@@ -10,6 +10,8 @@ on:
       - addons/repos/main.yaml
 jobs:
   copy-to-docs:
+    permissions:
+      contents: read
     name: Copy to Docs
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
