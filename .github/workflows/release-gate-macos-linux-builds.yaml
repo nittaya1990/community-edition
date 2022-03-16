@@ -9,6 +9,8 @@ on:
 
 jobs:
   release-gate-macos-and-linux-release-builds:
+    permissions:
+      contents: read
     name: Release Gate - MacOS and Linux OS Release Builds
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
