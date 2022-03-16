@@ -13,6 +13,8 @@ on:
 
 jobs:
   checkmdlint:
+    permissions:
+      contents: read
     name: Check mdlint
     runs-on: ubuntu-latest
     steps:
