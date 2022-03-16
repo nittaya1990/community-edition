@@ -13,6 +13,8 @@ on:
 
 jobs:
   unittestexternaldns:
+    permissions:
+      contents: read
     name: Unit Test
     runs-on: ubuntu-latest
     steps:
