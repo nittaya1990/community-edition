@@ -14,6 +14,8 @@ on:
 
 jobs:
   checkyaml:
+    permissions:
+      contents: read
     name: Check - yaml
     runs-on: ubuntu-latest
     steps:
