@@ -14,6 +14,8 @@ on:
 
 jobs:
   checkurllint:
+    permissions:
+      contents: read
     name: Check urllint
     runs-on: ubuntu-latest
     steps:
