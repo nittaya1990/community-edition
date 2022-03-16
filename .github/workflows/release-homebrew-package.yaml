@@ -7,6 +7,8 @@ on:
 
 jobs:
   update-homebrew-package:
+    permissions:
+      contents: read
     name: Update Homebrew Package
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
