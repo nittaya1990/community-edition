@@ -11,6 +11,8 @@ on:
 
 jobs:
   setup-runner:
+    permissions:
+      contents: none
     name: Start self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
@@ -26,6 +28,8 @@ jobs:
           echo "INSTANCE_NAME: ${INSTANCE_NAME}"
           echo ::set-output name=ec2-instance-id::${INSTANCE_NAME}
   build-release:
+    permissions:
+      contents: read
     name: Alpha, Beta, or RC Release
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
@@ -138,6 +142,8 @@ jobs:
           asset_name: cayman_trigger.txt
           asset_content_type: text/plain
   teardown-runner:
+    permissions:
+      contents: none
     name: Stop self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
