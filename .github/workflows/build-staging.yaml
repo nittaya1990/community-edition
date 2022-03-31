@@ -13,6 +13,8 @@ on:
       - "**"
 jobs:
   setup-runner:
+    permissions:
+      contents: none
     name: Start self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
@@ -65,6 +67,8 @@ jobs:
           destination: tce-cli-plugins-staging
           credentials: ${{ secrets.GCP_BUCKET_SA }}
   teardown-runner:
+    permissions:
+      contents: none
     name: Stop self-hosted EC2 runner
     # Only run this job if we're in the main repo, not a fork.
     if: github.repository == 'vmware-tanzu/community-edition'
