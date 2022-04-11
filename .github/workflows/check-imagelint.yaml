@@ -13,6 +13,8 @@ on:
 
 jobs:
   checkimagelint:
+    permissions:
+      contents: read
     name: Check imagelint
     runs-on: ubuntu-latest
     steps:
