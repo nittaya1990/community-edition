@@ -12,6 +12,8 @@ on:
 
 jobs:
   checkactionlint:
+    permissions:
+      contents: read
     name: Check actionlint
     runs-on: ubuntu-latest
     steps:
